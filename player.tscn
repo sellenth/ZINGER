@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccgwvloem1uo6"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_0phxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyvt8"]
+
+[sub_resource type="Gradient" id="Gradient_m33ow"]
+offsets = PackedFloat32Array(0.851406, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x6hov"]
+gradient = SubResource("Gradient_m33ow")
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_0phxo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vyvt8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.078125, 20)
+texture = SubResource("GradientTexture1D_x6hov")
