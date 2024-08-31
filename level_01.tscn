@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2tdqfeogwwc4"]
+
+[ext_resource type="PackedScene" uid="uid://ccgwvloem1uo6" path="res://player.tscn" id="1_dm3lm"]
+[ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_v5evd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llu8v"]
+size = Vector2(1148, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_majmq"]
+
+[node name="Level01" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3lm")]
+position = Vector2(369, 577)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(401, 636)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(177, 0)
+shape = SubResource("RectangleShape2D_llu8v")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(0.500031, -0.374996)
+scale = Vector2(1155, 18.75)
+texture = SubResource("PlaceholderTexture2D_majmq")
+
+[node name="spike" parent="." instance=ExtResource("2_v5evd")]
+position = Vector2(232, 222)
+
+[node name="spike2" parent="." instance=ExtResource("2_v5evd")]
+position = Vector2(573, 148)
+
+[node name="spike3" parent="." instance=ExtResource("2_v5evd")]
+position = Vector2(435, 247)

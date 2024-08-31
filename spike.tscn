@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://swrmk8v420o8"]
+
+[sub_resource type="Gradient" id="Gradient_vvwgr"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfgwn"]
+gradient = SubResource("Gradient_vvwgr")
+
+[node name="spike" type="Node2D"]
+
+[node name="spike" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="spike"]
+position = Vector2(17.36, 6)
+polygon = PackedVector2Array(4, 7, 43, 7, 42, 42, 24, 62, 6, 44)
+
+[node name="Sprite2D2" type="Sprite2D" parent="spike/CollisionShape2D"]
+position = Vector2(29.64, 48)
+rotation = 0.578733
+scale = Vector2(0.0292969, 25.5)
+texture = SubResource("GradientTexture1D_hfgwn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="spike/CollisionShape2D"]
+position = Vector2(17.64, 50)
+rotation = -0.607963
+scale = Vector2(0.0292969, 25.5)
+texture = SubResource("GradientTexture1D_hfgwn")
+
+[node name="Sprite2D" type="Sprite2D" parent="spike/CollisionShape2D"]
+position = Vector2(25.64, 26)
+scale = Vector2(0.167969, 41)
+texture = SubResource("GradientTexture1D_hfgwn")

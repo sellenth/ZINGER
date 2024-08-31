@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://vt7tuls2v4nc"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_o3p3f"]
+[ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_glsrf"]
+[ext_resource type="PackedScene" uid="uid://ccgwvloem1uo6" path="res://player.tscn" id="3_bm2el"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa16e"]
+size = Vector2(1148, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rj6lf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_galem"]
+size = Vector2(214.235, 911)
+
+[sub_resource type="Theme" id="Theme_wy2fn"]
+default_font_size = 65
+
+[sub_resource type="Theme" id="Theme_wo655"]
+default_font_size = 75
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_o3p3f")
+spike_scene = ExtResource("2_glsrf")
+
+[node name="player" parent="." node_paths=PackedStringArray("level") instance=ExtResource("3_bm2el")]
+position = Vector2(29, 601)
+level = NodePath("..")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(44, 527)
+scale = Vector2(-0.119998, 0.959999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(177, 0)
+shape = SubResource("RectangleShape2D_pa16e")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2/CollisionShape2D"]
+position = Vector2(0.500031, -0.374996)
+scale = Vector2(1155, 18.75)
+texture = SubResource("PlaceholderTexture2D_rj6lf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(401, 636)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(177, 0)
+shape = SubResource("RectangleShape2D_pa16e")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(0.500031, -0.374996)
+scale = Vector2(1155, 18.75)
+texture = SubResource("PlaceholderTexture2D_rj6lf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="spikes" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1255, 190.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_galem")
+
+[node name="backwall" type="Area2D" parent="."]
+position = Vector2(-111, 381)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="backwall"]
+shape = SubResource("RectangleShape2D_galem")
+
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2(25, 601)
+
+[node name="level_text" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -20.0
+offset_right = 190.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.71968, 1.81715)
+size_flags_horizontal = 4
+theme = SubResource("Theme_wy2fn")
+text = "levels"
+
+[node name="mode" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 89.0
+offset_right = 406.0
+offset_bottom = 192.0
+scale = Vector2(0.4128, 1.08571)
+theme = SubResource("Theme_wo655")
+text = "easy mode"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_endzone_entered"]
+[connection signal="body_entered" from="backwall" to="." method="_backwall_entered"]
