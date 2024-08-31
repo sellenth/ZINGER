@@ -13,6 +13,8 @@ config_version=5
 config/name="2d"
 run/main_scene="res://level.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [input]
