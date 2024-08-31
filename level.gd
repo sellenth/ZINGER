@@ -10,7 +10,7 @@ extends Node2D
 # Spike trap scene to instance
 @export var spike_scene: PackedScene
 var level: int = 0
-@export var easy_mode = true
+@export var easy_mode = false
 var rng = RandomNumberGenerator.new()
 
 func generate_level() -> void:
@@ -55,6 +55,8 @@ func toggle_mode():
 	
 func respawn_player():
 	$player.position = $spawn.position
+	var current_time = Time.get_ticks_msec() / 1000.0
+	$player.last_restart_time = current_time
 	
 	
 func next_level() -> void:

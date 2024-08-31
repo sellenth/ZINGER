@@ -53,3 +53,4 @@ func hit_by_spike():
 		level.generate_level()
 	else:
 		get_tree().reload_current_scene()
+		
