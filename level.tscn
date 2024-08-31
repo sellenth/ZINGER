@@ -85,6 +85,7 @@ grow_vertical = 2
 scale = Vector2(1.71968, 1.81715)
 size_flags_horizontal = 4
 theme = SubResource("Theme_wy2fn")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "levels"
 
 [node name="mode" type="Label" parent="."]

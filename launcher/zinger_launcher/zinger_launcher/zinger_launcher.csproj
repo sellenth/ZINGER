@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-	<PublishSingleFile>true</PublishSingleFile>
-	<SelfContained>true</SelfContained>
-	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	<PublishReadyToRun>true</PublishReadyToRun>
-	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<PublishReadyToRun>true</PublishReadyToRun>
+		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+		<EnableCompressionInSingleFile >true</EnableCompressionInSingleFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="screenshot.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="screenshot.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>
