@@ -1,13 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://vt7tuls2v4nc"]
+[gd_scene load_steps=15 format=3 uid="uid://vt7tuls2v4nc"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_o3p3f"]
 [ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_glsrf"]
 [ext_resource type="PackedScene" uid="uid://ccgwvloem1uo6" path="res://player.tscn" id="3_bm2el"]
+[ext_resource type="Texture2D" uid="uid://b1bcu78s8t0gj" path="res://background_layer_2.png" id="3_t6ksg"]
+[ext_resource type="Texture2D" uid="uid://botaena1xr3ar" path="res://rock_1.png" id="4_ekf0n"]
+[ext_resource type="Texture2D" uid="uid://bu6hps2ikvfdh" path="res://shop.png" id="5_trgc0"]
+[ext_resource type="Texture2D" uid="uid://chkc3n74q2u12" path="res://grass_1.png" id="6_bc20c"]
+[ext_resource type="Texture2D" uid="uid://dphdqcwyyeqg" path="res://grass_3.png" id="7_fq3gt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa16e"]
 size = Vector2(1148, 20)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rj6lf"]
+[sub_resource type="Gradient" id="Gradient_jvxhw"]
+offsets = PackedFloat32Array(0, 0.800866)
+colors = PackedColorArray(0, 0.172549, 0, 1, 0.227242, 0.138715, 0.0777053, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c1g8b"]
+gradient = SubResource("Gradient_jvxhw")
+width = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_galem"]
 size = Vector2(214.235, 911)
@@ -22,6 +33,30 @@ default_font_size = 75
 script = ExtResource("1_o3p3f")
 spike_scene = ExtResource("2_glsrf")
 
+[node name="BackgroundLayer2" type="Sprite2D" parent="."]
+position = Vector2(605, 304)
+scale = Vector2(4.175, 3.75556)
+texture = ExtResource("3_t6ksg")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(309, 604)
+scale = Vector2(5.55, 5.77273)
+texture = ExtResource("4_ekf0n")
+
+[node name="Shop" type="Sprite2D" parent="."]
+position = Vector2(25, 471)
+texture = ExtResource("5_trgc0")
+
+[node name="Grass1" type="Sprite2D" parent="."]
+position = Vector2(883, 622)
+scale = Vector2(7.5, 8.16666)
+texture = ExtResource("6_bc20c")
+
+[node name="Grass3" type="Sprite2D" parent="."]
+position = Vector2(951, 619)
+scale = Vector2(3.05556, 5)
+texture = ExtResource("7_fq3gt")
+
 [node name="player" parent="." node_paths=PackedStringArray("level") instance=ExtResource("3_bm2el")]
 position = Vector2(29, 601)
 level = NodePath("..")
@@ -35,9 +70,9 @@ position = Vector2(177, 0)
 shape = SubResource("RectangleShape2D_pa16e")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2/CollisionShape2D"]
-position = Vector2(0.500031, -0.374996)
-scale = Vector2(1155, 18.75)
-texture = SubResource("PlaceholderTexture2D_rj6lf")
+position = Vector2(3.51196, -0.374996)
+scale = Vector2(111.005, 18.75)
+texture = SubResource("GradientTexture1D_c1g8b")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(401, 636)
@@ -49,7 +84,7 @@ shape = SubResource("RectangleShape2D_pa16e")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
 position = Vector2(0.500031, -0.374996)
 scale = Vector2(1155, 18.75)
-texture = SubResource("PlaceholderTexture2D_rj6lf")
+texture = SubResource("GradientTexture1D_c1g8b")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -85,7 +120,7 @@ grow_vertical = 2
 scale = Vector2(1.71968, 1.81715)
 size_flags_horizontal = 4
 theme = SubResource("Theme_wy2fn")
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0.286413, 0.61179, 0.427645, 1)
 text = "levels"
 
 [node name="mode" type="Label" parent="."]
