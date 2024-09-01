@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccgwvloem1uo6"]
+[gd_scene load_steps=7 format=3 uid="uid://ccgwvloem1uo6"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0phxo"]
 
@@ -9,6 +9,13 @@ offsets = PackedFloat32Array(0.851406, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_x6hov"]
 gradient = SubResource("Gradient_m33ow")
+
+[sub_resource type="Gradient" id="Gradient_t7fdy"]
+offsets = PackedFloat32Array(0.851406, 1)
+colors = PackedColorArray(0.671654, 0.619719, 7.70092e-07, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7r1jj"]
+gradient = SubResource("Gradient_t7fdy")
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 3
@@ -21,3 +28,8 @@ shape = SubResource("RectangleShape2D_vyvt8")
 position = Vector2(0, 4.76837e-07)
 scale = Vector2(0.078125, 20)
 texture = SubResource("GradientTexture1D_x6hov")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+scale = Vector2(0.046875, 7)
+texture = SubResource("GradientTexture1D_7r1jj")

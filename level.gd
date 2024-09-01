@@ -9,7 +9,7 @@ extends Node2D
 
 # Spike trap scene to instance
 @export var spike_scene: PackedScene
-var level: int = 41
+var level: int = 72
 @export var easy_mode = false
 var rng = RandomNumberGenerator.new()
 

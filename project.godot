@@ -17,6 +17,14 @@ boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
+
 [input]
 
 move_left={
