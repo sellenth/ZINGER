@@ -1,0 +1,2 @@
+C:\Users\halston\Documents\2d\launcher\zinger_launcher\zinger_launcher\bin\Release\net8.0-windows\win-x64\publish\zinger_launcher.pdb
+C:\Users\halston\Documents\2d\launcher\zinger_launcher\zinger_launcher\bin\Release\net8.0-windows\win-x64\publish\zinger_launcher.exe
