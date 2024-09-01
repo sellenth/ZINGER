@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
-launcher/build
+launcher/zinger_launcher/bin/
+launcher/zinger_launcher/obj/
 
 # Godot-specific ignores
 .import/
