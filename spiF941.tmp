@@ -10,41 +10,39 @@ gradient = SubResource("Gradient_vvwgr")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k31o"]
 size = Vector2(44, 56)
 
-[node name="spike" type="Node2D"]
-
-[node name="spike" type="RigidBody2D" parent="."]
+[node name="spike" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_135hr")
 
-[node name="spike" type="CollisionPolygon2D" parent="spike"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(17.36, 6)
 polygon = PackedVector2Array(4, 7, 43, 7, 42, 42, 24, 62, 6, 44)
 
-[node name="Sprite2D2" type="Sprite2D" parent="spike/spike"]
+[node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(29.64, 48)
 rotation = 0.578733
 scale = Vector2(0.0292969, 25.5)
 texture = SubResource("GradientTexture1D_hfgwn")
 
-[node name="Sprite2D3" type="Sprite2D" parent="spike/spike"]
+[node name="Sprite2D3" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(17.64, 50)
 rotation = -0.607963
 scale = Vector2(0.0292969, 25.5)
 texture = SubResource("GradientTexture1D_hfgwn")
 
-[node name="Sprite2D" type="Sprite2D" parent="spike/spike"]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(25.64, 26)
 scale = Vector2(0.167969, 41)
 texture = SubResource("GradientTexture1D_hfgwn")
 
-[node name="platform_collider" type="Area2D" parent="spike"]
+[node name="platform_collider" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="spike/platform_collider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_collider"]
 position = Vector2(43, 39)
 shape = SubResource("RectangleShape2D_6k31o")
 
-[connection signal="body_entered" from="spike/platform_collider" to="spike" method="_on_platform_collider_body_entered"]
-[connection signal="body_exited" from="spike/platform_collider" to="spike" method="_on_platform_collider_body_exited"]
+[connection signal="body_entered" from="platform_collider" to="." method="_on_platform_collider_body_entered"]
+[connection signal="body_exited" from="platform_collider" to="." method="_on_platform_collider_body_exited"]

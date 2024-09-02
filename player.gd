@@ -7,12 +7,15 @@ extends CharacterBody2D
 # Jump force
 @export var jump_velocity: float = -400.0
 var last_restart_time: float = 0.0
-@export var fast_fall_multiplier: float = 2.0
+@export var fast_fall_multiplier: float = 2.7
 @export var level: Node2D
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction
 	var direction: Vector2 = Vector2.ZERO
+	
+	if Input.is_action_just_pressed("place_platform"):
+		level.place_platform(get_global_mouse_position())
 
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
@@ -32,7 +35,6 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction.x * speed
 	move_and_slide()
 
-		# Check if colliding with something on layer 2
 	if get_slide_collision_count() > 0:
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
@@ -53,4 +55,3 @@ func hit_by_spike():
 		level.generate_level()
 	else:
 		get_tree().reload_current_scene()
-		

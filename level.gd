@@ -13,6 +13,11 @@ var level: int = 72
 @export var easy_mode = false
 var rng = RandomNumberGenerator.new()
 
+# Platform scene and management
+@export var platform_scene: PackedScene
+var platforms = []
+const MAX_PLATFORMS = 3
+
 func generate_level() -> void:
 	$level_text.text = str(level)
 	$mode.text = "easy mode" if easy_mode else "hard mode"
@@ -29,7 +34,7 @@ func generate_level() -> void:
 		var y = spike_rng.randf_range(0, screen_height)
 		var spike = spike_scene.instantiate()
 		spike.position = Vector2(x, y)
-		$spikes.add_child(spike)
+		$spikes.call_deferred("add_child", spike)
 
 func _ready() -> void:
 	rng.seed = level
@@ -51,6 +56,7 @@ func _on_timer_timeout() -> void:
 	
 func toggle_mode():
 	easy_mode = !easy_mode
+	respawn_player()
 	generate_level()
 	
 func respawn_player():
@@ -61,7 +67,8 @@ func respawn_player():
 	
 func next_level() -> void:
 	respawn_player()
-	level+=1 # = rng.randi_range(0, 11)
+	reset_platforms()
+	level += 1
 	generate_level()
 
 func _endzone_entered(body: Node2D) -> void:
@@ -72,3 +79,19 @@ func _backwall_entered(body: Node2D) -> void:
 	if (body.name == "player"):
 		respawn_player()
 		generate_level()
+
+func place_platform(position):
+	if len(platforms) < MAX_PLATFORMS:
+		var platform = platform_scene.instantiate()
+		platform.position = position
+		$platforms.add_child(platform)
+		platforms.append(platform)
+	elif len(platforms) == MAX_PLATFORMS:
+		var platform = platforms.pop_front()
+		platform.position = position
+		platforms.append(platform)
+
+func reset_platforms():
+	for platform in platforms:
+		platform.queue_free()
+	platforms.clear()
