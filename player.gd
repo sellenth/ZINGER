@@ -43,7 +43,7 @@ func _physics_process(delta):
 	if get_slide_collision_count() > 0:
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
-			if(collision.get_collider().name == 'spike'):
+			if(collision.get_collider().name.begins_with('spike')):
 				var current_time = Time.get_ticks_msec() / 1000.0
 				if current_time - last_restart_time > 1.0:
 					hit_by_spike()

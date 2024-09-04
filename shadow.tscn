@@ -9,6 +9,5 @@ width = 24
 [node name="shadow" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-12, -13)
 scale = Vector2(1.66667, 36)
 texture = SubResource("GradientTexture1D_7phuk")

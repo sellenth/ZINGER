@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5v0umaf7pa0c"]
+[gd_scene load_steps=24 format=3 uid="uid://c5v0umaf7pa0c"]
 
 [ext_resource type="Script" path="res://level2.gd" id="1_43cfn"]
 [ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_u43kp"]
@@ -6,11 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://botaena1xr3ar" path="res://rock_1.png" id="3_t4wm7"]
 [ext_resource type="Texture2D" uid="uid://bu6hps2ikvfdh" path="res://shop.png" id="4_1x01f"]
 [ext_resource type="Texture2D" uid="uid://chkc3n74q2u12" path="res://grass_1.png" id="5_g84sn"]
+[ext_resource type="Texture2D" uid="uid://c7udvydvb1klg" path="res://lamp.png" id="5_q7qe2"]
 [ext_resource type="Texture2D" uid="uid://dphdqcwyyeqg" path="res://grass_3.png" id="6_a80em"]
 [ext_resource type="PackedScene" uid="uid://ccgwvloem1uo6" path="res://player.tscn" id="7_ufm7a"]
 [ext_resource type="PackedScene" uid="uid://d2o6ipr68yfth" path="res://shadow.tscn" id="8_2pvtq"]
 [ext_resource type="PackedScene" uid="uid://h3pmuy55v1ob" path="res://multiplayer.tscn" id="9_k563o"]
 [ext_resource type="Texture2D" uid="uid://b5n287lqf4gul" path="res://background_layer_1.png" id="11_edm5h"]
+[ext_resource type="PackedScene" uid="uid://dlfh3crjlbn3e" path="res://boulder.tscn" id="13_cr1c0"]
 
 [sub_resource type="Gradient" id="Gradient_jvxhw"]
 offsets = PackedFloat32Array(0, 0.800866)
@@ -29,6 +31,17 @@ size = Vector2(144, 35)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_galem"]
 size = Vector2(214.235, 911)
 
+[sub_resource type="Gradient" id="Gradient_0gowl"]
+colors = PackedColorArray(0.345098, 0.545098, 1, 0.698039, 0.79623, 1, 0.996979, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_twavs"]
+frequency = 0.0088
+offset = Vector3(1000, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wrc7r"]
+color_ramp = SubResource("Gradient_0gowl")
+noise = SubResource("FastNoiseLite_twavs")
+
 [sub_resource type="Theme" id="Theme_wy2fn"]
 default_font_size = 65
 
@@ -38,6 +51,7 @@ default_font_size = 75
 [node name="level" type="Node2D"]
 script = ExtResource("1_43cfn")
 spike_scene = ExtResource("2_u43kp")
+boulder_scene = ExtResource("13_cr1c0")
 platform_scene = ExtResource("3_a7ewt")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -53,6 +67,11 @@ centered = false
 position = Vector2(687, 406)
 motion_scale = Vector2(20, 20)
 motion_offset = Vector2(50, 0)
+
+[node name="Lamp" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(37, 658)
+scale = Vector2(1.61235, 1.69488)
+texture = ExtResource("5_q7qe2")
 
 [node name="Rocks" type="StaticBody2D" parent="."]
 
@@ -85,9 +104,9 @@ position = Vector2(1039, 256)
 polygon = PackedVector2Array(-182, 17, -150, 88, -99, 82, -47, 177, -47, 476, 32, 445, 35, 161, -31, 51, 15, 4)
 
 [node name="Shop" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.121569)
-position = Vector2(793, 405)
-rotation = -0.408833
+modulate = Color(1, 1, 1, 0.156863)
+position = Vector2(451, 523)
+rotation = 0.0413412
 scale = Vector2(0.779661, 0.826531)
 texture = ExtResource("4_1x01f")
 
@@ -137,17 +156,21 @@ position = Vector2(-524, -537.5)
 shape = SubResource("RectangleShape2D_pa16e")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 2.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 12.0
 autostart = true
 
 [node name="spikes" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="endzone" type="Area2D" parent="."]
 position = Vector2(1258, 324.5)
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="endzone"]
 position = Vector2(-125, 122.5)
 shape = SubResource("RectangleShape2D_galem")
 
@@ -159,14 +182,19 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="backwall"]
 polygon = PackedVector2Array(135, -564, 74, -291, 65, 273, 1134, 316, -60, 459, -22, -648)
 
+[node name="water" type="Sprite2D" parent="."]
+position = Vector2(541, 773)
+scale = Vector2(2.8457, 0.0917969)
+texture = SubResource("NoiseTexture2D_wrc7r")
+
 [node name="level_text" type="Label" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 412.0
-offset_top = 558.0
-offset_right = 590.0
-offset_bottom = 648.0
+offset_left = 842.0
+offset_top = 590.0
+offset_right = 1020.0
+offset_bottom = 680.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.71968, 1.81715)
@@ -177,10 +205,10 @@ text = "level"
 metadata/_edit_use_anchors_ = true
 
 [node name="mode" type="Label" parent="."]
-offset_left = 416.0
-offset_top = 667.0
-offset_right = 806.0
-offset_bottom = 770.0
+offset_left = 825.0
+offset_top = 668.0
+offset_right = 1215.0
+offset_bottom = 771.0
 scale = Vector2(0.4128, 1.08571)
 theme = SubResource("Theme_wo655")
 text = "easy mode"
@@ -193,6 +221,9 @@ position = Vector2(-30, 0)
 
 [node name="multiplayer" parent="." instance=ExtResource("9_k563o")]
 
+[node name="boulders" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_endzone_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="body_entered" from="endzone" to="." method="_endzone_entered"]
 [connection signal="body_entered" from="backwall" to="." method="_backwall_entered"]

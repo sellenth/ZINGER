@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlfh3crjlbn3e"]
+
+[ext_resource type="Texture2D" uid="uid://botaena1xr3ar" path="res://rock_1.png" id="1_a1iq5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxuik"]
+size = Vector2(58, 41)
+
+[sub_resource type="Gradient" id="Gradient_ya2es"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.731134, 0.866427, 0.94945, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s8nc8"]
+gradient = SubResource("Gradient_ya2es")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd7ao"]
+size = Vector2(12.8087, 2.40426)
+
+[node name="boulder" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+linear_velocity = Vector2(0, 100)
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, 32)
+rotation = -3.14159
+scale = Vector2(3.10437, 5.80491)
+texture = ExtResource("1_a1iq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 20.5)
+shape = SubResource("RectangleShape2D_vxuik")
+
+[node name="spike2" type="StaticBody2D" parent="."]
+position = Vector2(28, 12)
+rotation = -1.04
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="spike2"]
+position = Vector2(-0.0302868, 0.390838)
+rotation = 0.558446
+scale = Vector2(0.0487522, 2.55709)
+texture = SubResource("GradientTexture1D_s8nc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike2"]
+position = Vector2(-0.030283, 0.390837)
+rotation = 0.549223
+shape = SubResource("RectangleShape2D_wd7ao")
+
+[node name="spike" type="StaticBody2D" parent="."]
+position = Vector2(29, 6)
+rotation = 0.00719517
+
+[node name="Sprite2D" type="Sprite2D" parent="spike"]
+position = Vector2(-0.0302868, 0.390838)
+rotation = 0.558446
+scale = Vector2(0.0487522, 2.55709)
+texture = SubResource("GradientTexture1D_s8nc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike"]
+position = Vector2(-0.030283, 0.390837)
+rotation = 0.549223
+shape = SubResource("RectangleShape2D_wd7ao")
+
+[node name="spike3" type="StaticBody2D" parent="."]
+position = Vector2(26, 26)
+rotation = -1.04
+
+[node name="Sprite2D" type="Sprite2D" parent="spike3"]
+position = Vector2(-0.0302868, 0.390838)
+rotation = 0.558446
+scale = Vector2(0.0487522, 2.55709)
+texture = SubResource("GradientTexture1D_s8nc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike3"]
+position = Vector2(-0.030283, 0.390837)
+rotation = 0.549223
+shape = SubResource("RectangleShape2D_wd7ao")
+
+[node name="spike4" type="StaticBody2D" parent="."]
+position = Vector2(27, 20)
+rotation = 0.00719517
+
+[node name="Sprite2D" type="Sprite2D" parent="spike4"]
+position = Vector2(-0.0302868, 0.390838)
+rotation = 0.558446
+scale = Vector2(0.0487522, 2.55709)
+texture = SubResource("GradientTexture1D_s8nc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike4"]
+position = Vector2(-0.030283, 0.390837)
+rotation = 0.549223
+shape = SubResource("RectangleShape2D_wd7ao")
+
+[node name="spike5" type="StaticBody2D" parent="."]
+position = Vector2(24, 41)
+rotation = -1.04
+
+[node name="Sprite2D" type="Sprite2D" parent="spike5"]
+position = Vector2(-0.0302868, 0.390838)
+rotation = 0.558446
+scale = Vector2(0.0487522, 2.55709)
+texture = SubResource("GradientTexture1D_s8nc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike5"]
+position = Vector2(-0.030283, 0.390837)
+rotation = 0.549223
+shape = SubResource("RectangleShape2D_wd7ao")
+
+[node name="spike6" type="StaticBody2D" parent="."]
+position = Vector2(25, 35)
+rotation = 0.00719517
+
+[node name="Sprite2D" type="Sprite2D" parent="spike6"]
+position = Vector2(-0.0302868, 0.390838)
+rotation = 0.558446
+scale = Vector2(0.0487522, 2.55709)
+texture = SubResource("GradientTexture1D_s8nc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike6"]
+position = Vector2(-0.030283, 0.390837)
+rotation = 0.549223
+shape = SubResource("RectangleShape2D_wd7ao")

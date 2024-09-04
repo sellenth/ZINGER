@@ -6,10 +6,12 @@ extends Node2D
 
 # Number of spike traps to spawn
 @export var spike_count: int = 12
+@export var boulder_count: int = 3
 
 # Spike trap scene to instance
 @export var spike_scene: PackedScene
-var level: int = 72
+@export var boulder_scene: PackedScene
+var level: int = 0
 @export var easy_mode = false
 var rng = RandomNumberGenerator.new()
 
@@ -20,7 +22,7 @@ const MAX_PLATFORMS = 5
 const generation_speed = 2.0
 
 func generate_level() -> void:
-	$Timer.wait_time = generation_speed;
+	$Timer.start()
 	$level_text.text = str(level)
 	$mode.text = "easy mode" if easy_mode else "hard mode"
 	for n in $spikes.get_children():
@@ -38,6 +40,23 @@ func generate_level() -> void:
 		spike.position = Vector2(x, y)
 		$spikes.call_deferred("add_child", spike)
 
+func generate_boulders() -> void:
+	$Timer2.start()
+	for n in $boulders.get_children():
+		$boulders.remove_child(n)
+		n.queue_free()
+	
+	var boulder_rng = RandomNumberGenerator.new()
+	boulder_rng.seed = level + 1
+	
+	# Generate spike traps
+	for i in range(boulder_count):
+		var x = boulder_rng.randf_range(100, screen_width-100)
+		var y = boulder_rng.randf_range(-100, 0)
+		var boulder = boulder_scene.instantiate()
+		boulder.position = Vector2(x, y)
+		$boulders.call_deferred("add_child", boulder)
+
 func _ready() -> void:
 	rng.seed = level
 	next_level()
@@ -47,9 +66,11 @@ func _input(e: InputEvent):
 		if (e.is_action_pressed("next_level")):
 			level = mini(11, level + 1)
 			generate_level()
+			generate_boulders()
 		if (e.is_action_pressed("prev_level")):
 			level = maxi(0, level - 1)
 			generate_level()
+			generate_boulders()
 	if (e.is_action_pressed("toggle_mode")):
 		toggle_mode()
 	if (e.is_action_pressed("clear")):
@@ -65,6 +86,7 @@ func toggle_mode():
 	easy_mode = !easy_mode
 	respawn_player()
 	generate_level()
+	generate_boulders()
 	
 func respawn_player():
 	$player.position = $spawn.position
@@ -77,6 +99,7 @@ func next_level() -> void:
 	reset_platforms()
 	level += 1
 	generate_level()
+	generate_boulders()
 
 func _endzone_entered(body: Node2D) -> void:
 	if (body.name == "player"):
@@ -86,6 +109,7 @@ func _backwall_entered(body: Node2D) -> void:
 	if (body.name == "player"):
 		respawn_player()
 		generate_level()
+		generate_boulders()
 
 func place_platform(position):
 	if len(platforms) < MAX_PLATFORMS:
@@ -102,3 +126,7 @@ func reset_platforms():
 	for platform in platforms:
 		platform.queue_free()
 	platforms.clear()
+
+
+func _on_timer_2_timeout() -> void:
+	generate_boulders()
