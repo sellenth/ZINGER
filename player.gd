@@ -10,7 +10,12 @@ var last_restart_time: float = 0.0
 @export var fast_fall_multiplier: float = 2.7
 @export var level: Node2D
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(delta):
+	var args = OS.get_cmdline_args()
+	if "--server" in args:
+		return
+	$"../multiplayer".update_position.rpc(position)
 	# Get the input direction
 	var direction: Vector2 = Vector2.ZERO
 	
@@ -50,8 +55,7 @@ func _physics_process(delta: float) -> void:
 		get_tree().quit()
 
 func hit_by_spike():
-	if (level.easy_mode):
-		level.respawn_player()
-		level.generate_level()
-	else:
-		get_tree().reload_current_scene()
+	if (!level.easy_mode):
+		level.level = 0
+	level.respawn_player()
+	level.generate_level()

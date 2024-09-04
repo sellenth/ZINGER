@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=3 uid="uid://c5v0umaf7pa0c"]
+
+[ext_resource type="Script" path="res://level2.gd" id="1_43cfn"]
+[ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_u43kp"]
+[ext_resource type="PackedScene" uid="uid://cvfy5y31tavlr" path="res://platform.tscn" id="3_a7ewt"]
+[ext_resource type="Texture2D" uid="uid://botaena1xr3ar" path="res://rock_1.png" id="3_t4wm7"]
+[ext_resource type="Texture2D" uid="uid://bu6hps2ikvfdh" path="res://shop.png" id="4_1x01f"]
+[ext_resource type="Texture2D" uid="uid://chkc3n74q2u12" path="res://grass_1.png" id="5_g84sn"]
+[ext_resource type="Texture2D" uid="uid://dphdqcwyyeqg" path="res://grass_3.png" id="6_a80em"]
+[ext_resource type="PackedScene" uid="uid://ccgwvloem1uo6" path="res://player.tscn" id="7_ufm7a"]
+[ext_resource type="PackedScene" uid="uid://d2o6ipr68yfth" path="res://shadow.tscn" id="8_2pvtq"]
+[ext_resource type="PackedScene" uid="uid://h3pmuy55v1ob" path="res://multiplayer.tscn" id="9_k563o"]
+[ext_resource type="Texture2D" uid="uid://b5n287lqf4gul" path="res://background_layer_1.png" id="11_edm5h"]
+
+[sub_resource type="Gradient" id="Gradient_jvxhw"]
+offsets = PackedFloat32Array(0, 0.800866)
+colors = PackedColorArray(0, 0.172549, 0, 1, 0.227242, 0.138715, 0.0777053, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c1g8b"]
+gradient = SubResource("Gradient_jvxhw")
+width = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eh7rr"]
+size = Vector2(1120.86, 21.2486)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa16e"]
+size = Vector2(144, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_galem"]
+size = Vector2(214.235, 911)
+
+[sub_resource type="Theme" id="Theme_wy2fn"]
+default_font_size = 65
+
+[sub_resource type="Theme" id="Theme_wo655"]
+default_font_size = 75
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_43cfn")
+spike_scene = ExtResource("2_u43kp")
+platform_scene = ExtResource("3_a7ewt")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(1252, 792)
+rotation = 3.14159
+scale = Vector2(4.44217, 4.44217)
+texture = ExtResource("11_edm5h")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(687, 406)
+motion_scale = Vector2(20, 20)
+motion_offset = Vector2(50, 0)
+
+[node name="Rocks" type="StaticBody2D" parent="."]
+
+[node name="Rock1" type="Sprite2D" parent="Rocks"]
+position = Vector2(951.818, 304.384)
+rotation = 3.06942
+scale = Vector2(9.44197, 6.66742)
+texture = ExtResource("3_t4wm7")
+
+[node name="Rock2" type="Sprite2D" parent="Rocks"]
+position = Vector2(995.818, 368.384)
+rotation = -2.07183
+scale = Vector2(9.44197, 6.66742)
+texture = ExtResource("3_t4wm7")
+
+[node name="Rock3" type="Sprite2D" parent="Rocks"]
+position = Vector2(1028, 504)
+rotation = -1.55416
+scale = Vector2(9.44197, 6.66742)
+texture = ExtResource("3_t4wm7")
+
+[node name="Rock4" type="Sprite2D" parent="Rocks"]
+position = Vector2(1028, 636)
+rotation = 1.56554
+scale = Vector2(9.44197, 6.66742)
+texture = ExtResource("3_t4wm7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rocks"]
+position = Vector2(1039, 256)
+polygon = PackedVector2Array(-182, 17, -150, 88, -99, 82, -47, 177, -47, 476, 32, 445, 35, 161, -31, 51, 15, 4)
+
+[node name="Shop" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.121569)
+position = Vector2(793, 405)
+rotation = -0.408833
+scale = Vector2(0.779661, 0.826531)
+texture = ExtResource("4_1x01f")
+
+[node name="Grass1" type="Sprite2D" parent="."]
+position = Vector2(978, 573)
+rotation = -1.58971
+scale = Vector2(7.5, 8.16666)
+texture = ExtResource("5_g84sn")
+
+[node name="Grass3" type="Sprite2D" parent="."]
+position = Vector2(987, 450)
+rotation = -1.58971
+scale = Vector2(3.05556, 5)
+texture = ExtResource("6_a80em")
+
+[node name="player" parent="." node_paths=PackedStringArray("level") instance=ExtResource("7_ufm7a")]
+position = Vector2(71, 682)
+level = NodePath("..")
+
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2(72, 681)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(4.00001, 947)
+rotation = -1.18063
+scale = Vector2(0.308722, 0.959999)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(180.511, -0.374954)
+scale = Vector2(111.005, 18.75)
+texture = SubResource("GradientTexture1D_c1g8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(170.198, -4.21866)
+shape = SubResource("RectangleShape2D_eh7rr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(550, 1261)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-523, -536)
+scale = Vector2(14.4, 37.375)
+texture = SubResource("GradientTexture1D_c1g8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-524, -537.5)
+shape = SubResource("RectangleShape2D_pa16e")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
+
+[node name="spikes" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1258, 324.5)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-125, 122.5)
+shape = SubResource("RectangleShape2D_galem")
+
+[node name="backwall" type="Area2D" parent="."]
+position = Vector2(-108, 515)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="backwall"]
+polygon = PackedVector2Array(135, -564, 74, -291, 65, 273, 1134, 316, -60, 459, -22, -648)
+
+[node name="level_text" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 412.0
+offset_top = 558.0
+offset_right = 590.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.71968, 1.81715)
+size_flags_horizontal = 4
+theme = SubResource("Theme_wy2fn")
+theme_override_colors/font_color = Color(0.286413, 0.61179, 0.427645, 1)
+text = "level"
+metadata/_edit_use_anchors_ = true
+
+[node name="mode" type="Label" parent="."]
+offset_left = 416.0
+offset_top = 667.0
+offset_right = 806.0
+offset_bottom = 770.0
+scale = Vector2(0.4128, 1.08571)
+theme = SubResource("Theme_wo655")
+text = "easy mode"
+metadata/_edit_use_anchors_ = true
+
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="shadow" parent="." instance=ExtResource("8_2pvtq")]
+position = Vector2(-30, 0)
+
+[node name="multiplayer" parent="." instance=ExtResource("9_k563o")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_endzone_entered"]
+[connection signal="body_entered" from="backwall" to="." method="_backwall_entered"]

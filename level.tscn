@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vt7tuls2v4nc"]
+[gd_scene load_steps=18 format=3 uid="uid://vt7tuls2v4nc"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_o3p3f"]
 [ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_glsrf"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bu6hps2ikvfdh" path="res://shop.png" id="5_trgc0"]
 [ext_resource type="Texture2D" uid="uid://chkc3n74q2u12" path="res://grass_1.png" id="6_bc20c"]
 [ext_resource type="Texture2D" uid="uid://dphdqcwyyeqg" path="res://grass_3.png" id="7_fq3gt"]
+[ext_resource type="PackedScene" uid="uid://h3pmuy55v1ob" path="res://multiplayer.tscn" id="10_j14g4"]
+[ext_resource type="PackedScene" uid="uid://d2o6ipr68yfth" path="res://shadow.tscn" id="10_q0qsd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa16e"]
-size = Vector2(1148, 20)
+size = Vector2(144, 35)
 
 [sub_resource type="Gradient" id="Gradient_jvxhw"]
 offsets = PackedFloat32Array(0, 0.800866)
@@ -119,30 +121,34 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 15.0
-offset_top = 114.0
+offset_top = -11.0
 offset_right = 193.0
-offset_bottom = 204.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.71968, 1.81715)
 size_flags_horizontal = 4
 theme = SubResource("Theme_wy2fn")
 theme_override_colors/font_color = Color(0.286413, 0.61179, 0.427645, 1)
-text = "levels"
+text = "level"
 metadata/_edit_use_anchors_ = true
 
 [node name="mode" type="Label" parent="."]
 offset_left = 19.0
-offset_top = 223.0
+offset_top = 98.0
 offset_right = 409.0
-offset_bottom = 326.0
+offset_bottom = 201.0
 scale = Vector2(0.4128, 1.08571)
 theme = SubResource("Theme_wo655")
 text = "easy mode"
 metadata/_edit_use_anchors_ = true
 
 [node name="platforms" type="Node2D" parent="."]
-position = Vector2(3, 134)
+
+[node name="shadow" parent="." instance=ExtResource("10_q0qsd")]
+position = Vector2(-30, 0)
+
+[node name="multiplayer" parent="." instance=ExtResource("10_j14g4")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_endzone_entered"]
