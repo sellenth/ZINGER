@@ -39,6 +39,7 @@ offset_right = 58.0
 offset_bottom = -9.0
 scale = Vector2(0.75268, 0.570016)
 text = "placeholder"
+horizontal_alignment = 1
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_x5an3")

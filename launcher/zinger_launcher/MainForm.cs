@@ -22,7 +22,6 @@ namespace ZingerLauncher
             InitializeComponent();
             this.Load += MainForm_Load;
             LoadScreenshot();
-            newsbox.Text = "Loading news...";
         }
 
         private void LoadScreenshot()
@@ -64,6 +63,7 @@ namespace ZingerLauncher
         {
             await CheckAndDownloadEngine();
             await CheckAndDownloadGame();
+            await FetchNews();
             UpdateButtonState();
         }
 
@@ -74,7 +74,8 @@ namespace ZingerLauncher
                 using (var client = new HttpClient())
                 {
                     string newsContent = await client.GetStringAsync(GITHUB_RAW_URL + NEWS_FILENAME);
-                    newsbox.Text = newsContent;
+                    newsContent = newsContent.Replace("\n", "\r\n");
+                    newsbox.AppendText(newsContent);
                 }
             }
             catch (Exception ex)
@@ -158,7 +159,7 @@ namespace ZingerLauncher
             {
                 UpdateStatus("Launching game...");
                 string username = string.IsNullOrWhiteSpace(usernameTextBox.Text) ? "Username" : usernameTextBox.Text;
-                Process.Start(ENGINE_FILENAME, $"--main-pack {GAME_FILENAME} --username {username}");
+                Process.Start(ENGINE_FILENAME, $"--main-pack {GAME_FILENAME} --username={username}");
                 this.Close();
             }
             else

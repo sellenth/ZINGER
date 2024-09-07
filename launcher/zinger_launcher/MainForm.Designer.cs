@@ -133,12 +133,12 @@
             // 
             // newsbox
             // 
+            newsbox.Enabled = false;
             newsbox.Location = new Point(50, 421);
             newsbox.Multiline = true;
             newsbox.Name = "newsbox";
             newsbox.Size = new Size(558, 167);
             newsbox.TabIndex = 7;
-            newsbox.Text = "q";
             newsbox.TextChanged += textBox1_TextChanged;
             // 
             // MainForm

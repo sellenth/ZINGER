@@ -23,6 +23,7 @@ func _ready() -> void:
 			# with the value set to an empty string.
 			arguments[argument.trim_prefix("--")] = ""
 
+
 func _physics_process(delta):
 	var args = OS.get_cmdline_args()
 	if arguments.has("server") or OS.has_feature("server"):
@@ -67,6 +68,11 @@ func _physics_process(delta):
 	# Quit the game if "Q" is pressed
 	if Input.is_action_just_pressed("quit_game"):
 		get_tree().quit()
+
+func respawn():
+	if arguments.has("username"):
+		print(arguments["username"])
+		mp.update_name.rpc(arguments["username"])
 
 func hit_by_spike():
 	if (!level.easy_mode):

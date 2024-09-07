@@ -82,3 +82,11 @@ func update_mode(easy_mode):
 	for i in $net_players.get_children():
 		if i.name == str(sender_id):
 			i.easy_mode = easy_mode
+
+@rpc("any_peer", "call_local")
+func update_name(name):
+	var sender_id = multiplayer.get_remote_sender_id()
+	
+	for i in $net_players.get_children():
+		if i.name == str(sender_id):
+			i.pname = name

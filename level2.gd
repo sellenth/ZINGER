@@ -97,6 +97,7 @@ func respawn_player():
 	$player.last_restart_time = current_time
 	$multiplayer.update_level.rpc(level)
 	$multiplayer.update_mode.rpc(easy_mode)
+	$player.respawn()
 	
 func next_level() -> void:
 	level += 1
