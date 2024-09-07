@@ -14,7 +14,7 @@ func _ready():
 	multiplayer.server_disconnected.connect(self._server_disconnected)
 
 	var args = OS.get_cmdline_args()
-	if "--server" in args:
+	if "--server" in args or OS.has_feature("server"):
 		host_game()
 	else:
 		join_game()
