@@ -220,6 +220,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-30, 0)
 
 [node name="multiplayer" parent="." instance=ExtResource("9_k563o")]
+player_placeholder = ExtResource("8_2pvtq")
 
 [node name="boulders" type="Node2D" parent="."]
 

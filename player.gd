@@ -15,7 +15,7 @@ func _physics_process(delta):
 	var args = OS.get_cmdline_args()
 	if "--server" in args or OS.has_feature("server"):
 		return
-	$"../multiplayer".update_position.rpc(position)
+	#$"../multiplayer".update_position.rpc(position)
 	# Get the input direction
 	var direction: Vector2 = Vector2.ZERO
 	

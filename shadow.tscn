@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2o6ipr68yfth"]
+[gd_scene load_steps=4 format=3 uid="uid://d2o6ipr68yfth"]
+
+[ext_resource type="Script" path="res://shadow.gd" id="1_dtvff"]
 
 [sub_resource type="Gradient" id="Gradient_ffvnc"]
 
@@ -7,7 +9,16 @@ gradient = SubResource("Gradient_ffvnc")
 width = 24
 
 [node name="shadow" type="Node2D"]
+script = ExtResource("1_dtvff")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.66667, 36)
 texture = SubResource("GradientTexture1D_7phuk")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 60.0
+offset_bottom = -9.0
+scale = Vector2(0.75268, 0.570016)
+text = "placeholder"

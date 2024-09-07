@@ -31,6 +31,7 @@ func join_game():
 func _player_connected(id):
 	print("Player connected: " + str(id))
 	var p = player_placeholder.instantiate()
+	p.pname = str(id)
 	p.position = Vector2(640, 480)
 	p.name = str(id)
 	$net_players.add_child(p)

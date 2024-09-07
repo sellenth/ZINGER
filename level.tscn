@@ -149,6 +149,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-30, 0)
 
 [node name="multiplayer" parent="." instance=ExtResource("10_j14g4")]
+player_placeholder = ExtResource("10_q0qsd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_endzone_entered"]
