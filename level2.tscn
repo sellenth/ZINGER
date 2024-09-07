@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5v0umaf7pa0c"]
+[gd_scene load_steps=25 format=3 uid="uid://c5v0umaf7pa0c"]
 
 [ext_resource type="Script" path="res://level2.gd" id="1_43cfn"]
 [ext_resource type="PackedScene" uid="uid://swrmk8v420o8" path="res://spike.tscn" id="2_u43kp"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c7udvydvb1klg" path="res://lamp.png" id="5_q7qe2"]
 [ext_resource type="Texture2D" uid="uid://dphdqcwyyeqg" path="res://grass_3.png" id="6_a80em"]
 [ext_resource type="PackedScene" uid="uid://ccgwvloem1uo6" path="res://player.tscn" id="7_ufm7a"]
-[ext_resource type="PackedScene" uid="uid://d2o6ipr68yfth" path="res://shadow.tscn" id="8_2pvtq"]
 [ext_resource type="PackedScene" uid="uid://h3pmuy55v1ob" path="res://multiplayer.tscn" id="9_k563o"]
 [ext_resource type="Texture2D" uid="uid://b5n287lqf4gul" path="res://background_layer_1.png" id="11_edm5h"]
 [ext_resource type="PackedScene" uid="uid://dlfh3crjlbn3e" path="res://boulder.tscn" id="13_cr1c0"]
@@ -26,7 +25,14 @@ width = 10
 size = Vector2(1120.86, 21.2486)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa16e"]
-size = Vector2(144, 35)
+size = Vector2(144, 10.615)
+
+[sub_resource type="Gradient" id="Gradient_040nm"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.403702, 0.203364, 0.094618, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yjatg"]
+gradient = SubResource("Gradient_040nm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_galem"]
 size = Vector2(214.235, 911)
@@ -69,7 +75,7 @@ motion_scale = Vector2(20, 20)
 motion_offset = Vector2(50, 0)
 
 [node name="Lamp" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(37, 658)
+position = Vector2(60, 676)
 scale = Vector2(1.61235, 1.69488)
 texture = ExtResource("5_q7qe2")
 
@@ -123,11 +129,11 @@ scale = Vector2(3.05556, 5)
 texture = ExtResource("6_a80em")
 
 [node name="player" parent="." node_paths=PackedStringArray("level") instance=ExtResource("7_ufm7a")]
-position = Vector2(71, 682)
+position = Vector2(14, 701)
 level = NodePath("..")
 
 [node name="spawn" type="Node2D" parent="."]
-position = Vector2(72, 681)
+position = Vector2(14.458, 702.696)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(4.00001, 947)
@@ -144,16 +150,16 @@ position = Vector2(170.198, -4.21866)
 shape = SubResource("RectangleShape2D_eh7rr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(550, 1261)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-523, -536)
-scale = Vector2(14.4, 37.375)
-texture = SubResource("GradientTexture1D_c1g8b")
+position = Vector2(549, 1279)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-524, -537.5)
+position = Vector2(-524, -550)
 shape = SubResource("RectangleShape2D_pa16e")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-523.5, -548)
+scale = Vector2(0.566406, 14)
+texture = SubResource("GradientTexture1D_yjatg")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -180,7 +186,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="backwall"]
-polygon = PackedVector2Array(135, -564, 74, -291, 65, 273, 1134, 316, -60, 459, -22, -648)
+polygon = PackedVector2Array(95, -646, 94, -320, 96, 277, 1134, 316, -60, 459, -60, -656)
 
 [node name="water" type="Sprite2D" parent="."]
 position = Vector2(541, 773)
@@ -216,11 +222,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="platforms" type="Node2D" parent="."]
 
-[node name="shadow" parent="." instance=ExtResource("8_2pvtq")]
-position = Vector2(-30, 0)
-
 [node name="multiplayer" parent="." instance=ExtResource("9_k563o")]
-player_placeholder = ExtResource("8_2pvtq")
+player_name = "Player"
 
 [node name="boulders" type="Node2D" parent="."]
 

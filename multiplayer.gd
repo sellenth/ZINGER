@@ -5,6 +5,7 @@ var peer = ENetMultiplayerPeer.new()
 @export var player_name = "Player"
 @export var player_placeholder: PackedScene
 var positions = {}
+var connected = false
 
 func _ready():
 	multiplayer.peer_connected.connect(self._player_connected)
@@ -30,28 +31,46 @@ func join_game():
 
 func _player_connected(id):
 	print("Player connected: " + str(id))
+#
 	var p = player_placeholder.instantiate()
 	p.pname = str(id)
 	p.position = Vector2(640, 480)
 	p.name = str(id)
-	$net_players.add_child(p)
+	$net_players.add_child(p, true)
+	$"../".respawn_player() # may want to make more granular call to update level only
 
 func _player_disconnected(id):
+	for i in $net_players.get_children():
+		if i.name == str(id):
+			$net_players.remove_child(i)
+			i.queue_free()
 	print("Player disconnected: " + str(id))
 
 func _connected_ok():
+	connected = true
 	print("Connected to server!")
 
 func _connected_fail():
+	connected = false
 	print("Connection failed!")
 
 func _server_disconnected():
+	connected = false
 	print("Server disconnected!")
 
 @rpc("any_peer", "call_local")
 func update_position(pos):
 	var sender_id = multiplayer.get_remote_sender_id()
 	positions[sender_id] = pos
+	
 	for i in $net_players.get_children():
 		if i.name == str(sender_id):
 			i.position = pos
+
+@rpc("any_peer", "call_local")
+func update_level(level):
+	var sender_id = multiplayer.get_remote_sender_id()
+	
+	for i in $net_players.get_children():
+		if i.name == str(sender_id):
+			i.level = level

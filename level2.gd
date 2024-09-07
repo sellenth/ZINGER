@@ -92,6 +92,7 @@ func respawn_player():
 	$player.position = $spawn.position
 	var current_time = Time.get_ticks_msec() / 1000.0
 	$player.last_restart_time = current_time
+	$multiplayer.update_level.rpc(level)
 	
 	
 func next_level() -> void:

@@ -9,13 +9,18 @@ extends CharacterBody2D
 var last_restart_time: float = 0.0
 @export var fast_fall_multiplier: float = 2.7
 @export var level: Node2D
+var mp: Node
 
+func _ready() -> void:
+	mp = $"../multiplayer"
 
 func _physics_process(delta):
 	var args = OS.get_cmdline_args()
 	if "--server" in args or OS.has_feature("server"):
 		return
-	#$"../multiplayer".update_position.rpc(position)
+	
+	if mp.connected:
+		mp.update_position.rpc(position)
 	# Get the input direction
 	var direction: Vector2 = Vector2.ZERO
 	

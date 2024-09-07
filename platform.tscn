@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvfy5y31tavlr"]
+[gd_scene load_steps=5 format=3 uid="uid://cvfy5y31tavlr"]
+
+[ext_resource type="Texture2D" uid="uid://chkc3n74q2u12" path="res://grass_1.png" id="1_6ta6p"]
+[ext_resource type="Texture2D" uid="uid://cj4gdcmyg3w37" path="res://grass_2.png" id="2_47q43"]
+[ext_resource type="Texture2D" uid="uid://dphdqcwyyeqg" path="res://grass_3.png" id="3_u3kxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(100, 10)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1"]
 
 [node name="Platform" type="StaticBody2D"]
 collision_layer = 4
@@ -12,6 +14,29 @@ collision_mask = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(100, 10)
-texture = SubResource("PlaceholderTexture2D_1")
+[node name="Grass1" type="Sprite2D" parent="."]
+modulate = Color(0.248387, 0.738354, 0.506811, 1)
+position = Vector2(6.82121e-12, 0.999999)
+rotation = -3.14159
+scale = Vector2(11.4053, 4.08888)
+texture = ExtResource("1_6ta6p")
+
+[node name="Grass4" type="Sprite2D" parent="Grass1"]
+self_modulate = Color(0.547945, 0.357271, 0.211278, 1)
+position = Vector2(1.64629e-06, 1.22283)
+scale = Vector2(0.936161, 0.249998)
+texture = ExtResource("1_6ta6p")
+
+[node name="Grass2" type="Sprite2D" parent="."]
+modulate = Color(0.560594, 0.997852, 0.65607, 1)
+position = Vector2(-11, 5)
+rotation = 3.14159
+scale = Vector2(2.60869, 2.83333)
+texture = ExtResource("2_47q43")
+
+[node name="Grass3" type="Sprite2D" parent="."]
+modulate = Color(0.629962, 0.981978, 0.613274, 1)
+position = Vector2(23, 4)
+rotation = -2.87979
+scale = Vector2(1.95543, 3.14147)
+texture = ExtResource("3_u3kxf")
