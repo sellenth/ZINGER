@@ -26,7 +26,10 @@ func host_game():
 	print("Waiting for players!")
 
 func join_game():
-	peer.create_client("localhost", 4242)
+	if (OS.is_debug_build()):
+		peer.create_client("localhost", 4242)
+	else:
+		peer.create_client("66.225.102.10", 4242)
 	multiplayer.multiplayer_peer = peer
 
 func _player_connected(id):
