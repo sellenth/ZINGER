@@ -2,6 +2,7 @@
 .godot/
 launcher/zinger_launcher/bin/
 launcher/zinger_launcher/obj/
+launcher/.vs/
 dist/server/srvr.exe
 
 # Godot-specific ignores
