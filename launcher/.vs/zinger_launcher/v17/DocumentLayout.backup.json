@@ -1,7 +1,28 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\halston\\Documents\\2d\\launcher\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|c:\\users\\halston\\documents\\2d\\launcher\\zinger_launcher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|solutionrelative:zinger_launcher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|c:\\users\\halston\\documents\\2d\\launcher\\zinger_launcher\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|solutionrelative:zinger_launcher\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|c:\\users\\halston\\documents\\2d\\launcher\\zinger_launcher\\zinger_launcher.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|solutionrelative:zinger_launcher\\zinger_launcher.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|c:\\users\\halston\\documents\\2d\\launcher\\zinger_launcher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|solutionrelative:zinger_launcher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|c:\\users\\halston\\documents\\2d\\launcher\\zinger_launcher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47FC6908-1B8E-41D1-9928-06C23D0D4ED9}|zinger_launcher\\zinger_launcher.csproj|solutionrelative:zinger_launcher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,23 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\MainForm.cs",
+              "RelativeDocumentMoniker": "zinger_launcher\\MainForm.cs",
+              "ToolTip": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\MainForm.cs [Design]",
+              "RelativeToolTip": "zinger_launcher\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T22:49:32.667Z",
+              "EditorCaption": " [Design]"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\MainForm.cs",
+              "RelativeDocumentMoniker": "zinger_launcher\\MainForm.cs",
+              "ToolTip": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\MainForm.cs",
+              "RelativeToolTip": "zinger_launcher\\MainForm.cs",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAmwN0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T22:25:19.468Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\Program.cs",
+              "RelativeDocumentMoniker": "zinger_launcher\\Program.cs",
+              "ToolTip": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\Program.cs",
+              "RelativeToolTip": "zinger_launcher\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T22:25:12.958Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "zinger_launcher\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\MainForm.Designer.cs",
+              "RelativeToolTip": "zinger_launcher\\MainForm.Designer.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAIwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T22:24:04.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "zinger_launcher.csproj",
+              "DocumentMoniker": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\zinger_launcher.csproj",
+              "RelativeDocumentMoniker": "zinger_launcher\\zinger_launcher.csproj",
+              "ToolTip": "C:\\Users\\halston\\Documents\\2d\\launcher\\zinger_launcher\\zinger_launcher.csproj",
+              "RelativeToolTip": "zinger_launcher\\zinger_launcher.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-31T23:09:08.098Z",
+              "EditorCaption": ""
             }
           ]
         }
