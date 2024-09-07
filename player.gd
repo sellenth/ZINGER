@@ -10,13 +10,22 @@ var last_restart_time: float = 0.0
 @export var fast_fall_multiplier: float = 2.7
 @export var level: Node2D
 var mp: Node
+var arguments = {}
 
 func _ready() -> void:
 	mp = $"../multiplayer"
+	for argument in OS.get_cmdline_args():
+		if argument.contains("="):
+			var key_value = argument.split("=")
+			arguments[key_value[0].trim_prefix("--")] = key_value[1]
+		else:
+			# Options without an argument will be present in the dictionary,
+			# with the value set to an empty string.
+			arguments[argument.trim_prefix("--")] = ""
 
 func _physics_process(delta):
 	var args = OS.get_cmdline_args()
-	if "--server" in args or OS.has_feature("server"):
+	if arguments.has("server") or OS.has_feature("server"):
 		return
 	
 	if mp.connected:

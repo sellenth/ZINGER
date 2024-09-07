@@ -21,6 +21,11 @@ var platforms = []
 const MAX_PLATFORMS = 5
 const generation_speed = 2.0
 
+var ehiscore = 0
+var echamp = "dmpdmp"
+var hhiscore = 0
+var hchamp = "dmpdmp"
+
 func generate_level() -> void:
 	$Timer.start()
 	$level_text.text = str(level)
@@ -64,9 +69,7 @@ func _ready() -> void:
 func _input(e: InputEvent):
 	if (OS.is_debug_build()):
 		if (e.is_action_pressed("next_level")):
-			level = mini(11, level + 1)
-			generate_level()
-			generate_boulders()
+			next_level()
 		if (e.is_action_pressed("prev_level")):
 			level = maxi(0, level - 1)
 			generate_level()
@@ -93,12 +96,19 @@ func respawn_player():
 	var current_time = Time.get_ticks_msec() / 1000.0
 	$player.last_restart_time = current_time
 	$multiplayer.update_level.rpc(level)
-	
+	$multiplayer.update_mode.rpc(easy_mode)
 	
 func next_level() -> void:
+	level += 1
 	respawn_player()
 	reset_platforms()
-	level += 1
+	generate_level()
+	generate_boulders()
+	
+func prev_level() -> void:
+	level -= 1
+	respawn_player()
+	reset_platforms()
 	generate_level()
 	generate_boulders()
 
@@ -131,3 +141,15 @@ func reset_platforms():
 
 func _on_timer_2_timeout() -> void:
 	generate_boulders()
+
+
+func _on_refresh_scores_timer_timeout() -> void:
+	for i in $"multiplayer/net_players".get_children():
+		if (i.easy_mode && i.level > ehiscore):
+			ehiscore = i.level
+			echamp = i.name
+		if (!i.easy_mode && i.level > hhiscore):
+			hhiscore = i.level
+			hchamp = i.name
+	$easy_hiscore.text = "easy: " + str(ehiscore) + " - " + echamp
+	$hard_hiscore.text = "hard: " + str(hhiscore) + " - " + hchamp

@@ -223,11 +223,29 @@ metadata/_edit_use_anchors_ = true
 [node name="platforms" type="Node2D" parent="."]
 
 [node name="multiplayer" parent="." instance=ExtResource("9_k563o")]
-player_name = "Player"
 
 [node name="boulders" type="Node2D" parent="."]
+
+[node name="easy_hiscore" type="Label" parent="."]
+offset_left = -1.0
+offset_right = 106.0
+offset_bottom = 23.0
+scale = Vector2(0.858658, 0.71366)
+text = "easy: tmptmp"
+
+[node name="hard_hiscore" type="Label" parent="."]
+offset_left = -7.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 32.0
+scale = Vector2(1.16053, 1.7506)
+text = "hard: tmptmp"
+
+[node name="refresh_scores_timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="body_entered" from="endzone" to="." method="_endzone_entered"]
 [connection signal="body_entered" from="backwall" to="." method="_backwall_entered"]
+[connection signal="timeout" from="refresh_scores_timer" to="." method="_on_refresh_scores_timer_timeout"]

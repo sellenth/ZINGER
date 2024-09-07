@@ -1,6 +1,7 @@
 extends Node2D
 @export var pname = "placeholder"
 @export var level = 0
+@export var easy_mode: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
