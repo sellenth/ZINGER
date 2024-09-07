@@ -12,6 +12,7 @@ namespace ZingerLauncher
     public partial class MainForm : Form
     {
         private const string GITHUB_RAW_URL = "https://raw.githubusercontent.com/sellenth/ZINGER/main/dist/";
+        private const string NEWS_FILENAME = "news.txt";
         private const string ENGINE_FILENAME = "engine.exe";
         private const string GAME_FILENAME = "engine.pck";
         private const string SCREENSHOT_FILENAME = "screenshot.png";
@@ -21,6 +22,7 @@ namespace ZingerLauncher
             InitializeComponent();
             this.Load += MainForm_Load;
             LoadScreenshot();
+            newsbox.Text = "Loading news...";
         }
 
         private void LoadScreenshot()
@@ -63,6 +65,22 @@ namespace ZingerLauncher
             await CheckAndDownloadEngine();
             await CheckAndDownloadGame();
             UpdateButtonState();
+        }
+
+        private async Task FetchNews()
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string newsContent = await client.GetStringAsync(GITHUB_RAW_URL + NEWS_FILENAME);
+                    newsbox.Text = newsContent;
+                }
+            }
+            catch (Exception ex)
+            {
+                UpdateStatus($"Error fetching news: {ex.Message}");
+            }
         }
 
         private async Task CheckAndDownloadEngine()
@@ -139,7 +157,8 @@ namespace ZingerLauncher
             if (File.Exists(ENGINE_FILENAME) && File.Exists(GAME_FILENAME))
             {
                 UpdateStatus("Launching game...");
-                Process.Start(ENGINE_FILENAME, "--main-pack " + GAME_FILENAME);
+                string username = string.IsNullOrWhiteSpace(usernameTextBox.Text) ? "Username" : usernameTextBox.Text;
+                Process.Start(ENGINE_FILENAME, $"--main-pack {GAME_FILENAME} --username {username}");
                 this.Close();
             }
             else
@@ -185,6 +204,21 @@ namespace ZingerLauncher
         private void playButton_Click(object sender, EventArgs e)
         {
             StartGame();
+        }
+
+        private void buttonPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

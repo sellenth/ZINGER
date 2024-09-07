@@ -28,105 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.screenshotPictureBox = new System.Windows.Forms.PictureBox();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
-            this.buttonPanel = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.screenshotPictureBox)).BeginInit();
-            this.buttonPanel.SuspendLayout();
-            this.SuspendLayout();
+            titleLabel = new Label();
+            screenshotPictureBox = new PictureBox();
+            progressBar = new ProgressBar();
+            statusLabel = new Label();
+            updateButton = new Button();
+            playButton = new Button();
+            buttonPanel = new Panel();
+            usernameTextBox = new TextBox();
+            newsbox = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)screenshotPictureBox).BeginInit();
+            buttonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // titleLabel
             // 
-            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleLabel.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(0, 0);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Padding = new System.Windows.Forms.Padding(0, 20, 0, 20);
-            this.titleLabel.Size = new System.Drawing.Size(400, 84);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "ZINGER";
-            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            titleLabel.Dock = DockStyle.Top;
+            titleLabel.Font = new Font("Arial", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            titleLabel.Location = new Point(0, 0);
+            titleLabel.Margin = new Padding(5, 0, 5, 0);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Padding = new Padding(0, 38, 0, 38);
+            titleLabel.Size = new Size(667, 162);
+            titleLabel.TabIndex = 0;
+            titleLabel.Text = "ZINGER";
+            titleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            titleLabel.Click += titleLabel_Click;
             // 
             // screenshotPictureBox
             // 
-            this.screenshotPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.screenshotPictureBox.Location = new System.Drawing.Point(0, 84);
-            this.screenshotPictureBox.Name = "screenshotPictureBox";
-            this.screenshotPictureBox.Padding = new System.Windows.Forms.Padding(10);
-            this.screenshotPictureBox.Size = new System.Drawing.Size(400, 222);
-            this.screenshotPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.screenshotPictureBox.TabIndex = 1;
-            this.screenshotPictureBox.TabStop = false;
+            screenshotPictureBox.Dock = DockStyle.Fill;
+            screenshotPictureBox.Location = new Point(0, 162);
+            screenshotPictureBox.Margin = new Padding(5, 6, 5, 6);
+            screenshotPictureBox.Name = "screenshotPictureBox";
+            screenshotPictureBox.Padding = new Padding(17, 19, 17, 19);
+            screenshotPictureBox.Size = new Size(667, 426);
+            screenshotPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            screenshotPictureBox.TabIndex = 1;
+            screenshotPictureBox.TabStop = false;
             // 
             // progressBar
             // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar.Location = new System.Drawing.Point(0, 346);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(400, 23);
-            this.progressBar.TabIndex = 2;
+            progressBar.Dock = DockStyle.Bottom;
+            progressBar.Location = new Point(0, 665);
+            progressBar.Margin = new Padding(5, 6, 5, 6);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(667, 44);
+            progressBar.TabIndex = 2;
             // 
             // statusLabel
             // 
-            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.statusLabel.Location = new System.Drawing.Point(0, 369);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.statusLabel.Size = new System.Drawing.Size(400, 31);
-            this.statusLabel.TabIndex = 3;
-            this.statusLabel.Text = "Ready to launch";
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            statusLabel.Dock = DockStyle.Bottom;
+            statusLabel.Location = new Point(0, 709);
+            statusLabel.Margin = new Padding(5, 0, 5, 0);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Padding = new Padding(0, 0, 0, 19);
+            statusLabel.Size = new Size(667, 60);
+            statusLabel.TabIndex = 3;
+            statusLabel.Text = "Ready to launch";
+            statusLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(10, 5);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(75, 30);
-            this.updateButton.TabIndex = 4;
-            this.updateButton.Text = "Update";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            updateButton.Location = new Point(17, 10);
+            updateButton.Margin = new Padding(5, 6, 5, 6);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(125, 58);
+            updateButton.TabIndex = 4;
+            updateButton.Text = "Update";
+            updateButton.UseVisualStyleBackColor = true;
+            updateButton.Click += updateButton_Click;
             // 
             // playButton
             // 
-            this.playButton.Location = new System.Drawing.Point(315, 5);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(75, 30);
-            this.playButton.TabIndex = 5;
-            this.playButton.Text = "Play";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            playButton.Location = new Point(525, 10);
+            playButton.Margin = new Padding(5, 6, 5, 6);
+            playButton.Name = "playButton";
+            playButton.Size = new Size(125, 58);
+            playButton.TabIndex = 5;
+            playButton.Text = "Play";
+            playButton.UseVisualStyleBackColor = true;
+            playButton.Click += playButton_Click;
             // 
             // buttonPanel
             // 
-            this.buttonPanel.Controls.Add(this.updateButton);
-            this.buttonPanel.Controls.Add(this.playButton);
-            this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonPanel.Location = new System.Drawing.Point(0, 306);
-            this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(400, 40);
-            this.buttonPanel.TabIndex = 6;
+            buttonPanel.Controls.Add(updateButton);
+            buttonPanel.Controls.Add(playButton);
+            buttonPanel.Controls.Add(usernameTextBox);
+            buttonPanel.Dock = DockStyle.Bottom;
+            buttonPanel.Location = new Point(0, 588);
+            buttonPanel.Margin = new Padding(5, 6, 5, 6);
+            buttonPanel.Name = "buttonPanel";
+            buttonPanel.Size = new Size(667, 77);
+            buttonPanel.TabIndex = 6;
+            // 
+            // usernameTextBox
+            // 
+            usernameTextBox.Location = new Point(500, 77);
+            usernameTextBox.Margin = new Padding(5, 6, 5, 6);
+            usernameTextBox.Name = "usernameTextBox";
+            usernameTextBox.PlaceholderText = "Username";
+            usernameTextBox.Size = new Size(331, 31);
+            usernameTextBox.TabIndex = 7;
+            // 
+            // newsbox
+            // 
+            newsbox.Location = new Point(50, 421);
+            newsbox.Multiline = true;
+            newsbox.Name = "newsbox";
+            newsbox.Size = new Size(558, 167);
+            newsbox.TabIndex = 7;
+            newsbox.Text = "q";
+            newsbox.TextChanged += textBox1_TextChanged;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 400);
-            this.Controls.Add(this.screenshotPictureBox);
-            this.Controls.Add(this.buttonPanel);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.statusLabel);
-            this.Name = "MainForm";
-            this.Text = "ZINGER Launcher";
-            ((System.ComponentModel.ISupportInitialize)(this.screenshotPictureBox)).EndInit();
-            this.buttonPanel.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(667, 769);
+            Controls.Add(newsbox);
+            Controls.Add(screenshotPictureBox);
+            Controls.Add(buttonPanel);
+            Controls.Add(titleLabel);
+            Controls.Add(progressBar);
+            Controls.Add(statusLabel);
+            Margin = new Padding(5, 6, 5, 6);
+            Name = "MainForm";
+            Text = "ZINGER Launcher";
+            ((System.ComponentModel.ISupportInitialize)screenshotPictureBox).EndInit();
+            buttonPanel.ResumeLayout(false);
+            buttonPanel.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -138,5 +171,7 @@
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Panel buttonPanel;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private TextBox newsbox;
     }
 }

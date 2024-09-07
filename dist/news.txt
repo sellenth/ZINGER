@@ -1,0 +1,5 @@
+patch notes v0.1:
+-multiplayer with usernames has been added
+-new platforms and floating rocks
+-different map design
+-hiscores for easy and hard mode
