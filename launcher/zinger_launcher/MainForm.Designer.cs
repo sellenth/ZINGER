@@ -62,7 +62,7 @@
             screenshotPictureBox.Margin = new Padding(5, 6, 5, 6);
             screenshotPictureBox.Name = "screenshotPictureBox";
             screenshotPictureBox.Padding = new Padding(17, 19, 17, 19);
-            screenshotPictureBox.Size = new Size(667, 426);
+            screenshotPictureBox.Size = new Size(667, 389);
             screenshotPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             screenshotPictureBox.TabIndex = 1;
             screenshotPictureBox.TabStop = false;
@@ -116,10 +116,10 @@
             buttonPanel.Controls.Add(playButton);
             buttonPanel.Controls.Add(usernameTextBox);
             buttonPanel.Dock = DockStyle.Bottom;
-            buttonPanel.Location = new Point(0, 588);
+            buttonPanel.Location = new Point(0, 551);
             buttonPanel.Margin = new Padding(5, 6, 5, 6);
             buttonPanel.Name = "buttonPanel";
-            buttonPanel.Size = new Size(667, 77);
+            buttonPanel.Size = new Size(667, 114);
             buttonPanel.TabIndex = 6;
             // 
             // usernameTextBox
@@ -134,7 +134,7 @@
             // newsbox
             // 
             newsbox.Enabled = false;
-            newsbox.Location = new Point(50, 421);
+            newsbox.Location = new Point(47, 375);
             newsbox.Multiline = true;
             newsbox.Name = "newsbox";
             newsbox.Size = new Size(558, 167);
